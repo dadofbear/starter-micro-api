@@ -1,9 +1,21 @@
 var http = require('http');
 const cron = require('node-cron');
+const axios = require('axios');
 
 // Schedule tasks to be run on the server.
-cron.schedule('*/5 * * * * *', function () {
-    console.log('running a task every minute');
+cron.schedule('*/10 * * * * *', function () {
+    axios.get('https://kind-lime-bonobo-hem.cyclic.app')
+        .then(function (response) {
+            // handle success
+            console.log(response);
+        })
+        .catch(function (error) {
+            // handle error
+            console.log(error);
+        })
+        .then(function () {
+            // always executed
+        });
 });
 
 http.createServer(function (req, res) {

@@ -4,18 +4,7 @@ const axios = require('axios');
 
 // Schedule tasks to be run on the server.
 cron.schedule('*/10 * * * * *', function () {
-    axios.get('https://kind-lime-bonobo-hem.cyclic.app')
-        .then(function (response) {
-            // handle success
-            console.log(response);
-        })
-        .catch(function (error) {
-            // handle error
-            console.log(error);
-        })
-        .then(function () {
-            // always executed
-        });
+    console.log(new Date())
 });
 
 http.createServer(function (req, res) {
